@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+    <div id="app">
+        <label>HOW OLD ARE YOU：<input type="text" m-model="age"></label>
+        <div>AGE：{{age}}</div>
+        WHO ARE YOU?：{{author}}
+        <div class="apple">COLOR OF APPLE ： {{obj.color}}</div>
+        <input type="button" @click="add" value="+">
+        <div>COUNT OF CLICK: {{num}}</div>
+    </div>
+</body>
+<script src="myvue/my-vue.js"></script>
+<script src="index.js"></script>
+
+</html>
