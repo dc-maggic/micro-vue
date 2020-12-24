@@ -4,7 +4,8 @@
   "description": "功能： 1. 具备数据双向绑定 2. 响应式数据 3. 在数据更替时，Node 里的默认文字依旧显示",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "node ./serve/serve.js"
   },
   "author": "maggic",
   "license": "ISC",
