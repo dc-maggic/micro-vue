@@ -74,3 +74,6 @@ src
 
 当 new Vue时，会先调用 [this._init(options) 方法](./vue/src/core/instance/index.js)，这个方法定义在 [init.js](./vue/src/core/instance/init.js) 中，init 做了initLifecycle()初始化生命周期、initEvents(vm)初始化事件、initRender(vm)初始化渲染、callHook(vm, 'beforeCreate')初始化实例之前生命、initInjections(vm)解决prop||data之前的事件、initState(vm)初始化各种数据（data、prop、computed、watch）等事情。
 本次研究的是 [initState(vm)](./vue/src/core/instance/state.js) 中的 [initData(vm)](./vue/src/core/instance/state.js)。
+
+### Version1.0
+具备 模版语法、表单输入绑定 的功能
