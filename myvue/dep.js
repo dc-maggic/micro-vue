@@ -1,7 +1,4 @@
-let uid = 0;
 
-Dep.target = null
-const targetStack = []
 /* 
 对 watcher 的管理
  */
@@ -28,7 +25,10 @@ export class Dep {
         }
     }
 }
+let uid = 0;
 
+Dep.target = null
+const targetStack = []
 
 export function pushTarget (target) {
   targetStack.push(target)

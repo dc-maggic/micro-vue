@@ -1,5 +1,4 @@
-// import {Watcher} from './watcher.js'
-const Watcher = require('./watcher.js')
+import Watcher from './watcher.js'
 // 解析 HTML 的 DOM，绑定数据
 export default class Complier {
     constructor(el, vm) {
@@ -18,13 +17,13 @@ export default class Complier {
                 Array.from(nodeAttrs).forEach(attr => {
                     const attrName = attr.name;
                     const key = attr.value;
-                    if (attrName.indexOf('m-') === 0) {
-                        // for(var i in node){console.log(i)}
+                    if (attrName==='m-model') {
                         const _vm = this.$vm;
                         node.onkeyup = function(e){_vm[key]=node.value}
-                        const dir = attrName.substring(2);
-                        new Watcher(this.$vm, key, this.updateInputValue, { node: node });
+                        new Watcher(this.$vm, key, this.updateInputValue, { node });
                         this.updateInputValue(this.$vm[key], "", { node })
+                    } else if(attrName.indexOf('@')===0){
+                        console.log(attrName.substring(1))
                     }
                 })
             } else if (node.nodeType === 3 && /\{\{(.*)\}\}/.test(node.nodeValue)) { //绑定数据
@@ -51,6 +50,7 @@ export default class Complier {
             }
         })
     }
+    
     updateNodeValue(value, oldValue, arg) {
         let content = arg.content;
         content = content.replace(/\{\{(.*)\}\}/,value)

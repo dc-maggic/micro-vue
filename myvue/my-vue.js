@@ -1,6 +1,3 @@
-// import Dep from "./dep";
-
-
 class mVue {
     constructor(options) {
         this.$options = options;

@@ -1,3 +1,4 @@
+import mVue from "../myvue/index.js"
 const app = new mVue({
     el: '#app',
     data:{

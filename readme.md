@@ -29,26 +29,47 @@
 
 开发过程：
 vue 源码都在 src 文件里
+
 src
+
 ├── compiler        # 编译 
+
 ├── core            # 核心代码 
+
     ├── components  #组件
+
     ├── global-api  #公共api
+
     ├── instance    #实例
+
     ├── observer    #观察
+
         ├   array.js    #数组的处理
+
         ├   dep.js      #收集依赖
+
         ├   index.js    
+
         ├   scheduler.js   
+
         ├   traverse.js
+
         ├   watcher.js  #watcher 类
+
     ├── util        #工具函数
+
     ├── vdom        #虚拟 dom
+
     ├   config.js
+
     ├   index.js
+
 ├── platforms       # 不同平台的支持（web、小程序）
+
 ├── server          # 服务端渲染
+
 ├── sfc             # .vue 文件解析
+
 ├── shared          # 公共方法
 
 当 new Vue时，会先调用 [this._init(options) 方法](./vue/src/core/instance/index.js)，这个方法定义在 [init.js](./vue/src/core/instance/init.js) 中，init 做了initLifecycle()初始化生命周期、initEvents(vm)初始化事件、initRender(vm)初始化渲染、callHook(vm, 'beforeCreate')初始化实例之前生命、initInjections(vm)解决prop||data之前的事件、initState(vm)初始化各种数据（data、prop、computed、watch）等事情。
