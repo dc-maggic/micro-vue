@@ -90,3 +90,9 @@ npm run serve
 npx webpack
 //在 dist 文件夹生成代码块
 ```
+
+### Version1.2
+整改了文件结构；
+添加了 Vue 的 component方法，并给 component 返回 vue 的子类；
+解析 template 成一颗 ast 树；
+需要同时生成渲染函数（未做到）->通过渲染函数生成VNode->生成真实的DOM/更新需改变的DOM

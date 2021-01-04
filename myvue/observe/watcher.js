@@ -6,20 +6,19 @@
 
 import { pushTarget, popTarget } from './dep.js'
 export default class Watcher {
-    constructor(vm, key, cb, arg) {
+    constructor(vm, expOrFn, cb) {
         this.vm = vm;
-        this.key = key;
         this.active = true;
-        this.value = this.get();
-        this.arg = arg;
         this.cb = cb;
+        this.getter = expOrFn;
+        this.value = this.get()
     }
     // 触碰所有数据的 getter 
     get() {
         let value
         pushTarget(this)
         try {
-            value = this.vm[this.key]
+            value = this.getter.call(vm, vm)
         } catch (e) {
             console.error(e)
         } finally {
@@ -29,14 +28,14 @@ export default class Watcher {
     }
 
     update() {
-        this.cb.call(this.vm, this.vm[this.key], undefined, this.arg)
+        this.run();
     }
     run() {
         if (this.active) {
             const value = this.get()
             const oldValue = this.value
             this.value = value
-            this.cb.call(this.vm, this.vm[this.key], oldValue, this.arg)
+            this.cb.call(this.vm, this.value, oldValue)
         }
     }
 }

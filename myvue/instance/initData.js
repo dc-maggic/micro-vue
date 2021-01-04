@@ -6,7 +6,7 @@ data 的初始化主要过程也是做两件事，
 可以通过 vm._data.xxx 访问到定义 data 返回函数中对应的属性
 */
 import { proxy } from './proxy.js';
-import { observe } from './observe.js';
+import { observe } from '../observe/observe.js';
 // 不允许 $ _ 开头
 function isReserved(str) {
     const c = (str + '').charCodeAt(0)
@@ -27,7 +27,6 @@ export default function initData(vm) {
             )
         }
         if (!isReserved(key)) {
-            // 源码是 props data 两者都代理到vm实例上，但是我的 micro-vue 不需要 prop
             proxy(vm, `_data`, key)
         }
     }
